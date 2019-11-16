@@ -54,5 +54,29 @@ namespace Tennis.Implementation1
         {
             return _score >= 4;
         }
+
+        internal string GetOnGoingScore()
+        {
+            string score;
+            switch (_score)
+            {
+                case 0:
+                    score = "Love";
+                    break;
+                case 1:
+                    score = "Fifteen";
+                    break;
+                case 2:
+                    score = "Thirty";
+                    break;
+                case 3:
+                    score = "Forty";
+                    break;
+                default:
+                    score = null;
+                    break;
+            }
+            return score;
+        }
     }
 }
