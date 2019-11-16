@@ -22,18 +22,15 @@ namespace Tennis
 
         public string GetScore()
         {
-            var state = new TieState(_player1, _player2);
-            if (state.IsApplicable())
+            var tieState = new TieState(_player1, _player2);
+            var advantageState = new AdvantageState(_player1, _player2);
+            if (tieState.IsApplicable())
             {
-                return state.GetScore();
+                return tieState.GetScore();
             }
-            else if (_player1.HasReached4Points() || _player2.HasReached4Points())
+            else if (advantageState.IsApplicable())
             {
-                var minusResult = _player1.Score - _player2.Score;
-                if (minusResult == 1) return "Advantage player1";
-                else if (minusResult == -1) return "Advantage player2";
-                else if (minusResult >= 2) return "Win for player1";
-                else return "Win for player2";
+                return advantageState.GetScore();
             }
             else if(_player1.HasLessThan4Points() && _player2.HasLessThan4Points())
             {
@@ -41,28 +38,6 @@ namespace Tennis
             }
 
             throw new Exception("Impossible state of game");
-        }
-    }
-
-    public class TieState
-    {
-        private readonly Player _player1;
-        private readonly Player _player2;
-
-        public TieState(Player player1, Player player2)
-        {
-            _player1 = player1;
-            _player2 = player2;
-        }
-
-        public string GetScore()
-        {
-            return _player1.GetScore();
-        }
-
-        internal bool IsApplicable()
-        {
-            return _player1.IsInTieWith(_player2);
         }
     }
 }
