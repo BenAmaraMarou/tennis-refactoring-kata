@@ -1,9 +1,17 @@
-﻿namespace Tennis.Implementation1
+﻿using System.Collections.Generic;
+
+namespace Tennis.Implementation1
 {
     public class TieState : IGameState
     {
         private readonly Player _player1;
         private readonly Player _player2;
+        private static readonly IReadOnlyDictionary<int, TieScore> ScoreGrid = new Dictionary<int, TieScore>
+        {
+            { 0, TieScore.LoveAll },
+            { 1, TieScore.FifteenAll },
+            { 2, TieScore.ThirtyAll }
+        };
 
         public TieState(Player player1, Player player2)
         {
@@ -18,7 +26,8 @@
 
         public string GetScore()
         {
-            return _player1.GetTieScore().Display();
+            if (!ScoreGrid.TryGetValue(_player1.Points(), out TieScore score)) score = TieScore.Deuce;
+            return score.Display();
         }
     }
 }
