@@ -1,5 +1,6 @@
 ﻿using Tennis.Implementation1;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Tennis
 {
@@ -16,29 +17,24 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
-            if (_player1.IsCalled(playerName)) _player1.WinPoint();            
+            if (_player1.IsCalled(playerName)) _player1.WinPoint();
             else _player2.WinPoint();
         }
 
         public string GetScore()
         {
-            var tieState = new TieState(_player1, _player2);
-            var advantageState = new AdvantageState(_player1, _player2);
-            var onGoingState = new OnGoingState(_player1, _player2);
-            if (tieState.IsApplicable())
-            {
-                return tieState.GetScore();
-            }
-            else if (advantageState.IsApplicable())
-            {
-                return advantageState.GetScore();
-            }
-            else if(onGoingState.IsApplicable())
-            {
-                return onGoingState.GetScore();
-            }
+            var gameStates = GetGameStates();
+            return gameStates.First(state => state.IsApplicable()).GetScore();
+        }
 
-            throw new Exception("Impossible state of game");
+        private IEnumerable<IGameState> GetGameStates()
+        {
+            return new IGameState[3]
+            {
+                new TieState(_player1, _player2),
+                new AdvantageState(_player1, _player2),
+                new OnGoingState(_player1, _player2)
+            };
         }
     }
 }

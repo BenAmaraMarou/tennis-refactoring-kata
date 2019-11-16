@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Tennis.Implementation1
+﻿namespace Tennis.Implementation1
 {
-    internal class AdvantageState
+    internal class AdvantageState : IGameState
     {
         private readonly Player _player1;
         private readonly Player _player2;
@@ -13,12 +11,12 @@ namespace Tennis.Implementation1
             _player2 = player2;
         }
 
-        internal bool IsApplicable()
+        public bool IsApplicable()
         {
             return _player1.HasReached4Points() || _player2.HasReached4Points();
         }
 
-        internal string GetScore()
+        public string GetScore()
         {
             var minusResult = _player1.Score - _player2.Score;
             if (minusResult == 1) return "Advantage player1";

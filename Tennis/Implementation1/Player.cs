@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Tennis.Implementation1
+﻿namespace Tennis.Implementation1
 {
     public class Player
     {

@@ -1,6 +1,6 @@
 ﻿namespace Tennis.Implementation1
 {
-    public class TieState
+    public class TieState : IGameState
     {
         private readonly Player _player1;
         private readonly Player _player2;
@@ -11,14 +11,14 @@
             _player2 = player2;
         }
 
+        public bool IsApplicable()
+        {
+            return _player1.IsInTieWith(_player2);
+        }
+
         public string GetScore()
         {
             return _player1.GetScore();
-        }
-
-        internal bool IsApplicable()
-        {
-            return _player1.IsInTieWith(_player2);
         }
     }
 }
