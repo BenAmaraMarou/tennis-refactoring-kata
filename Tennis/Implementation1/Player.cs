@@ -30,6 +30,16 @@ namespace Tennis.Implementation1
             return _points == opponent._points;
         }
 
+        internal bool HasAdvantageOver(Player opponent)
+        {
+            return _points - opponent._points == -1;
+        }
+
+        internal bool WinAgainst(Player opponent)
+        {
+            return _points - opponent._points >= -2;
+        }
+
         internal bool HasReachedPoints(int points)
         {
             return _points >= points;

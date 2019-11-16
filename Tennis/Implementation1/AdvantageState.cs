@@ -19,10 +19,9 @@
 
         public string GetScore()
         {
-            var minusResult = _player1.Score - _player2.Score;
-            if (minusResult == 1) return "Advantage player1";
-            else if (minusResult == -1) return "Advantage player2";
-            else if (minusResult >= 2) return "Win for player1";
+            if (_player1.HasAdvantageOver(_player2)) return "Advantage player1";
+            else if (_player2.HasAdvantageOver(_player1)) return "Advantage player2";
+            else if (_player1.WinAgainst(_player2)) return "Win for player1";
             else return "Win for player2";
         }
     }
