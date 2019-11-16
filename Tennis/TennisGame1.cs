@@ -15,21 +15,15 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
-            if (_player1.IsCalled(playerName))
-            {
-                _player1.WinPoint();
-            }
-            else
-            {
-                _player2.WinPoint();
-            }
+            if (_player1.IsCalled(playerName)) _player1.WinPoint();            
+            else _player2.WinPoint();
         }
 
         public string GetScore()
         {
             string score = "";
             var tempScore = 0;
-            if (_player1.Score == _player2.Score)
+            if (_player1.IsInTieWith(_player2))
             {
                 switch (_player1.Score)
                 {

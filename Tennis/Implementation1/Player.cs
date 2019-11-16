@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Tennis.Implementation1
+﻿namespace Tennis.Implementation1
 {
     public class Player
     {
@@ -12,16 +10,21 @@ namespace Tennis.Implementation1
             this._name = player1Name;
         }
 
-        public int Score { get { return _score; } }
+        internal int Score { get { return _score; } }
 
-        public bool IsCalled(string playerName)
+        internal bool IsCalled(string playerName)
         {
             return _name == playerName;
         }
 
-        public void WinPoint()
+        internal void WinPoint()
         {
             _score++;
+        }
+
+        internal bool IsInTieWith(Player player2)
+        {
+            return _score == player2._score;
         }
     }
 }
