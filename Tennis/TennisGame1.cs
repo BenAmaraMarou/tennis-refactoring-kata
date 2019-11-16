@@ -22,7 +22,6 @@ namespace Tennis
         public string GetScore()
         {
             string score = "";
-            var tempScore = 0;
             if (_player1.IsInTieWith(_player2))
             {
                 switch (_player1.Score)
@@ -54,6 +53,7 @@ namespace Tennis
             {
                 for (var i = 1; i < 3; i++)
                 {
+                    var tempScore = 0;
                     if (i == 1) tempScore = _player1.Score;
                     else { score += "-"; tempScore = _player2.Score; }
                     switch (tempScore)
