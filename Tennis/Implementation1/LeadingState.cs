@@ -1,11 +1,11 @@
 ﻿namespace Tennis.Implementation1
 {
-    internal class AdvantageState : IGameState
+    internal class LeadingState : IGameState
     {
         private readonly Player _player1;
         private readonly Player _player2;
 
-        public AdvantageState(Player player1, Player player2)
+        public LeadingState(Player player1, Player player2)
         {
             _player1 = player1;
             _player2 = player2;

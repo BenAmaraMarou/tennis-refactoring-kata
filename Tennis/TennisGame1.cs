@@ -32,7 +32,7 @@ namespace Tennis
             return new IGameState[3]
             {
                 new TieState(_player1, _player2),
-                new AdvantageState(_player1, _player2),
+                new LeadingState(_player1, _player2),
                 new OnGoingState(_player1, _player2)
             };
         }
