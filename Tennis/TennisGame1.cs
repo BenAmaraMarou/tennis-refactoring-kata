@@ -24,6 +24,7 @@ namespace Tennis
         {
             var tieState = new TieState(_player1, _player2);
             var advantageState = new AdvantageState(_player1, _player2);
+            var onGoingState = new OnGoingState(_player1, _player2);
             if (tieState.IsApplicable())
             {
                 return tieState.GetScore();
@@ -32,9 +33,9 @@ namespace Tennis
             {
                 return advantageState.GetScore();
             }
-            else if(_player1.HasLessThan4Points() && _player2.HasLessThan4Points())
+            else if(onGoingState.IsApplicable())
             {
-                return _player1.GetOnGoingScore() + "-" + _player2.GetOnGoingScore();
+                return onGoingState.GetScore();
             }
 
             throw new Exception("Impossible state of game");
