@@ -26,7 +26,7 @@ namespace Tennis
             {
                 return _player1.GetScore();
             }
-            else if (_player1.Score >= 4 || _player2.Score >= 4)
+            else if (_player1.HasReached4Points() || _player2.HasReached4Points())
             {
                 var minusResult = _player1.Score - _player2.Score;
                 if (minusResult == 1) score = "Advantage player1";

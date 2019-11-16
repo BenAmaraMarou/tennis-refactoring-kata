@@ -49,5 +49,10 @@ namespace Tennis.Implementation1
             }
             return score;
         }
+
+        internal bool HasReached4Points()
+        {
+            return _score >= 4;
+        }
     }
 }
