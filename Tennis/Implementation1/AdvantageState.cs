@@ -19,10 +19,23 @@
 
         public string GetScore()
         {
-            if (_player1.HasAdvantageOver(_player2)) return "Advantage player1";
-            else if (_player2.HasAdvantageOver(_player1)) return "Advantage player2";
-            else if (_player1.WinAgainst(_player2)) return "Win for player1";
-            else return "Win for player2";
+            if (IsAnyPlayerInAdvantage()) return "Advantage " + PlayerInAdvantage(_player1, _player2);
+            return "Win for " + WinningPlayer(_player1, _player2);
+        }
+
+        private bool IsAnyPlayerInAdvantage()
+        {
+            return _player1.HasAdvantageOver(_player2) || _player2.HasAdvantageOver(_player1);
+        }
+        
+        private Player PlayerInAdvantage(Player player1, Player player2)
+        {
+            return _player1.HasAdvantageOver(player2) ? _player1 : _player2;
+        }
+        
+        private Player WinningPlayer(Player player1, Player player2)
+        {
+            return _player1.WinAgainst(player2) ? _player1 : _player2;
         }
     }
 }

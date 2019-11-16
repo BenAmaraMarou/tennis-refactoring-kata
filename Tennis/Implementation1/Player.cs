@@ -12,8 +12,6 @@ namespace Tennis.Implementation1
             _name = playerName;
         }
 
-        internal int Score { get { return _points; } }
-
         internal bool IsCalled(string playerName)
         {
             return _name == playerName;
@@ -33,6 +31,7 @@ namespace Tennis.Implementation1
         {
             return _points - opponent._points == -1;
         }
+        
 
         internal bool WinAgainst(Player opponent)
         {
@@ -64,6 +63,11 @@ namespace Tennis.Implementation1
                 { 3, "Forty" }
             };
             return scoreGrid[_points];
+        }
+
+        public override string ToString()
+        {
+            return _name;
         }
     }
 }
