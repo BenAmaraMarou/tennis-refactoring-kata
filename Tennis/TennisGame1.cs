@@ -24,7 +24,7 @@ namespace Tennis
         {
             if (_player1.IsInTieWith(_player2))
             {
-                return _player1.GetScore();
+                return new TieState(_player1).GetScore();
             }
             else if (_player1.HasReached4Points() || _player2.HasReached4Points())
             {
@@ -40,6 +40,21 @@ namespace Tennis
             }
 
             throw new Exception("Impossible state of game");
+        }
+    }
+
+    public class TieState
+    {
+        private readonly Player _player1;
+
+        public TieState(Player player1)
+        {
+            _player1 = player1;
+        }
+
+        public string GetScore()
+        {
+            return _player1.GetScore();
         }
     }
 }
