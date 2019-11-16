@@ -21,7 +21,6 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "";
             if (_player1.IsInTieWith(_player2))
             {
                 return _player1.GetScore();
@@ -29,16 +28,15 @@ namespace Tennis
             else if (_player1.HasReached4Points() || _player2.HasReached4Points())
             {
                 var minusResult = _player1.Score - _player2.Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
+                if (minusResult == 1) return "Advantage player1";
+                else if (minusResult == -1) return "Advantage player2";
+                else if (minusResult >= 2) return "Win for player1";
+                else return "Win for player2";
             }
             else
             {
-                return _player1.GetOnGoingScore() + "-" + _player2.GetOnGoingScore();                
+                return _player1.GetOnGoingScore() + "-" + _player2.GetOnGoingScore();
             }
-            return score;
         }
     }
 }
