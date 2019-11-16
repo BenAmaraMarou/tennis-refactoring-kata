@@ -13,7 +13,8 @@
 
         public bool IsApplicable()
         {
-            return _player1.HasLessThan4Points() && _player2.HasLessThan4Points();
+            return _player1.HasLessThanPoints(Constants.GameThresholdPoints) 
+                && _player2.HasLessThanPoints(Constants.GameThresholdPoints);
         }
 
         public string GetScore()

@@ -4,15 +4,16 @@ namespace Tennis.Implementation1
 {
     public class Player
     {
+        private const int MaxTiePoints = 3;
         private readonly string _name;
-        private int _score;
+        private int _points;
 
         public Player(string playerName)
         {
             _name = playerName;
         }
 
-        internal int Score { get { return _score; } }
+        internal int Score { get { return _points; } }
 
         internal bool IsCalled(string playerName)
         {
@@ -21,39 +22,39 @@ namespace Tennis.Implementation1
 
         internal void WinPoint()
         {
-            _score++;
+            _points++;
         }
 
         internal bool IsInTieWith(Player opponent)
         {
-            return _score == opponent._score;
+            return _points == opponent._points;
         }
 
-        internal bool HasReached4Points()
+        internal bool HasReachedPoints(int points)
         {
-            return _score >= 4;
+            return _points >= points;
         }
 
-        internal bool HasLessThan4Points()
+        internal bool HasLessThanPoints(int points)
         {
-            return _score < 4;
+            return _points < points;
         }
 
         internal string GetTieScore()
         {
-            return _score < 3 ? GetOnGoingScore() + "-All" : "Deuce";
+            return _points < MaxTiePoints ? GetOnGoingScore() + "-All" : "Deuce";
         }
         
         internal string GetOnGoingScore()
         {
-            var scores = new Dictionary<int, string>
+            var scoreGrid = new Dictionary<int, string>
             {
                 { 0, "Love" },
                 { 1, "Fifteen" },
                 { 2, "Thirty" },
                 { 3, "Forty" }
             };
-            return scores[_score];
+            return scoreGrid[_points];
         }
     }
 }

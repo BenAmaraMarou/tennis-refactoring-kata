@@ -13,7 +13,8 @@
 
         public bool IsApplicable()
         {
-            return _player1.HasReached4Points() || _player2.HasReached4Points();
+            return _player1.HasReachedPoints(Constants.GameThresholdPoints) 
+                || _player2.HasReachedPoints(Constants.GameThresholdPoints);
         }
 
         public string GetScore()
