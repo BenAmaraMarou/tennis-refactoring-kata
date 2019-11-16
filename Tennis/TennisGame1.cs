@@ -1,4 +1,5 @@
 ﻿using Tennis.Implementation1;
+using System;
 
 namespace Tennis
 {
@@ -33,10 +34,12 @@ namespace Tennis
                 else if (minusResult >= 2) return "Win for player1";
                 else return "Win for player2";
             }
-            else
+            else if(_player1.HasLessThan4Points() && _player2.HasLessThan4Points())
             {
                 return _player1.GetOnGoingScore() + "-" + _player2.GetOnGoingScore();
             }
+
+            throw new Exception("Impossible state of game");
         }
     }
 }

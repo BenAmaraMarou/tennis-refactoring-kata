@@ -55,6 +55,11 @@ namespace Tennis.Implementation1
             return _score >= 4;
         }
 
+        internal bool HasLessThan4Points()
+        {
+            return _score < 4;
+        }
+
         internal string GetOnGoingScore()
         {
             string score;
