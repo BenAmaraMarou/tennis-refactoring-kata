@@ -4,7 +4,6 @@ namespace Tennis.Implementation1
 {
     public class Player
     {
-        private const int MaxTiePoints = 3;
         private readonly string _name;
         private int _points;
 
@@ -52,7 +51,7 @@ namespace Tennis.Implementation1
 
         internal string GetTieScore()
         {
-            return _points < MaxTiePoints ? GetOnGoingScore() + "-All" : "Deuce";
+            return _points < Constants.MaxTiePoints ? GetOnGoingScore() + "-All" : "Deuce";
         }
         
         internal string GetOnGoingScore()
