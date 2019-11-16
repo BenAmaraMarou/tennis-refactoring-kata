@@ -28,7 +28,7 @@ namespace Tennis.Implementation1
 
         public string GetScore()
         {
-            return ScoreGrid[_player1.Points()].Display() + "-" + ScoreGrid[_player2.Points()].Display();
+            return $"{ScoreGrid[_player1.Points()].Display()} - {ScoreGrid[_player2.Points()].Display()}";
         }
     }
 }

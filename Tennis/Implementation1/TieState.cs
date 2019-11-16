@@ -26,7 +26,11 @@ namespace Tennis.Implementation1
 
         public string GetScore()
         {
-            if (!ScoreGrid.TryGetValue(_player1.Points(), out TieScore score)) score = TieScore.Deuce;
+            if (!ScoreGrid.TryGetValue(_player1.Points(), out TieScore score))
+            {
+                score = TieScore.Deuce;
+            }
+
             return score.Display();
         }
     }

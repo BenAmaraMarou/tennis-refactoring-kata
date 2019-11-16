@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Tennis.Implementation1
+﻿namespace Tennis.Implementation1
 {
     public class Player
     {
@@ -32,11 +30,12 @@ namespace Tennis.Implementation1
             return _points - opponent._points == 1;
         }
 
-        internal bool WinAgainst(Player opponent)
+        internal Player GetLeader(Player opponent)
         {
-            return _points - opponent._points >= 2;
+            if (_points > opponent._points) return this;
+            return opponent;
         }
-
+        
         internal bool HasReachedPoints(int points)
         {
             return _points >= points;

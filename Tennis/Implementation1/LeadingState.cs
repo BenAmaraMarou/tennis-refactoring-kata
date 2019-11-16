@@ -19,23 +19,14 @@
 
         public string GetScore()
         {
-            if (IsAnyPlayerInAdvantage()) return "Advantage " + PlayerInAdvantage();
-            return "Win for " + WinningPlayer();
+            return $"{LeadingStatus()}{_player1.GetLeader(_player2)}";
         }
 
-        private bool IsAnyPlayerInAdvantage()
+        private string LeadingStatus()
         {
-            return _player1.HasAdvantageOver(_player2) || _player2.HasAdvantageOver(_player1);
-        }
-
-        private Player PlayerInAdvantage()
-        {
-            return _player1.HasAdvantageOver(_player2) ? _player1 : _player2;
-        }
-
-        private Player WinningPlayer()
-        {
-            return _player1.WinAgainst(_player2) ? _player1 : _player2;
+            return _player1.HasAdvantageOver(_player2) || _player2.HasAdvantageOver(_player1)
+                ? Constants.Display.Advantage
+                : Constants.Display.Win;
         }
     }
 }
