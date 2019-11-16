@@ -1,13 +1,15 @@
-﻿namespace Tennis.Implementation1
+﻿using System.Collections.Generic;
+
+namespace Tennis.Implementation1
 {
     public class Player
     {
         private readonly string _name;
         private int _score;
 
-        public Player(string player1Name)
+        public Player(string playerName)
         {
-            this._name = player1Name;
+            _name = playerName;
         }
 
         internal int Score { get { return _score; } }
@@ -22,30 +24,9 @@
             _score++;
         }
 
-        internal bool IsInTieWith(Player player2)
+        internal bool IsInTieWith(Player opponent)
         {
-            return _score == player2._score;
-        }
-
-        internal string GetScore()
-        {
-            string score;
-            switch (_score)
-            {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-            }
-            return score;
+            return _score == opponent._score;
         }
 
         internal bool HasReached4Points()
@@ -58,28 +39,21 @@
             return _score < 4;
         }
 
+        internal string GetTieScore()
+        {
+            return _score < 3 ? GetOnGoingScore() + "-All" : "Deuce";
+        }
+        
         internal string GetOnGoingScore()
         {
-            string score;
-            switch (_score)
+            var scores = new Dictionary<int, string>
             {
-                case 0:
-                    score = "Love";
-                    break;
-                case 1:
-                    score = "Fifteen";
-                    break;
-                case 2:
-                    score = "Thirty";
-                    break;
-                case 3:
-                    score = "Forty";
-                    break;
-                default:
-                    score = null;
-                    break;
-            }
-            return score;
+                { 0, "Love" },
+                { 1, "Fifteen" },
+                { 2, "Thirty" },
+                { 3, "Forty" }
+            };
+            return scores[_score];
         }
     }
 }
