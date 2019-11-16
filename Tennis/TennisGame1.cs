@@ -24,22 +24,7 @@ namespace Tennis
             string score = "";
             if (_player1.IsInTieWith(_player2))
             {
-                switch (_player1.Score)
-                {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-
-                }
+                return _player1.GetScore();
             }
             else if (_player1.Score >= 4 || _player2.Score >= 4)
             {

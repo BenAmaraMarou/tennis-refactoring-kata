@@ -1,4 +1,6 @@
-﻿namespace Tennis.Implementation1
+﻿using System;
+
+namespace Tennis.Implementation1
 {
     public class Player
     {
@@ -25,6 +27,27 @@
         internal bool IsInTieWith(Player player2)
         {
             return _score == player2._score;
+        }
+
+        internal string GetScore()
+        {
+            string score;
+            switch (_score)
+            {
+                case 0:
+                    score = "Love-All";
+                    break;
+                case 1:
+                    score = "Fifteen-All";
+                    break;
+                case 2:
+                    score = "Thirty-All";
+                    break;
+                default:
+                    score = "Deuce";
+                    break;
+            }
+            return score;
         }
     }
 }
