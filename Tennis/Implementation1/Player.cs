@@ -5,6 +5,7 @@ namespace Tennis.Implementation1
     public class Player
     {
         private readonly string _name;
+        private int _score;
 
         public Player(string player1Name)
         {
@@ -14,6 +15,11 @@ namespace Tennis.Implementation1
         public bool IsCalled(string playerName)
         {
             return _name == playerName;
+        }
+
+        public void WinPoint()
+        {
+            _score++;
         }
     }
 }
