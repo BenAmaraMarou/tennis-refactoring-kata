@@ -12,6 +12,8 @@ namespace Tennis.Implementation1
             this._name = player1Name;
         }
 
+        public int Score { get { return _score; } }
+
         public bool IsCalled(string playerName)
         {
             return _name == playerName;
