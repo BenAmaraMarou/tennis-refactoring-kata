@@ -29,13 +29,12 @@ namespace Tennis.Implementation1
 
         internal bool HasAdvantageOver(Player opponent)
         {
-            return _points - opponent._points == -1;
+            return _points - opponent._points == 1;
         }
-        
 
         internal bool WinAgainst(Player opponent)
         {
-            return _points - opponent._points >= -2;
+            return _points - opponent._points >= 2;
         }
 
         internal bool HasReachedPoints(int points)
@@ -48,19 +47,25 @@ namespace Tennis.Implementation1
             return _points < points;
         }
 
-        internal string GetTieScore()
+        internal TieScore GetTieScore()
         {
-            return _points < Constants.MaxTiePoints ? GetOnGoingScore() + "-All" : "Deuce";
+            var scoreGrid = new Dictionary<int, TieScore>
+            {
+                { 0, TieScore.LoveAll },
+                { 1, TieScore.FifteenAll },
+                { 2, TieScore.ThirtyAll }
+            };
+            return scoreGrid.TryGetValue(_points, out TieScore score) ? score : TieScore.Deuce;
         }
         
-        internal string GetOnGoingScore()
+        internal OnGoingScore GetOnGoingScore()
         {
-            var scoreGrid = new Dictionary<int, string>
+            var scoreGrid = new Dictionary<int, OnGoingScore>
             {
-                { 0, "Love" },
-                { 1, "Fifteen" },
-                { 2, "Thirty" },
-                { 3, "Forty" }
+                { 0, OnGoingScore.Love },
+                { 1, OnGoingScore.Fifteen },
+                { 2, OnGoingScore.Thirty },
+                { 3, OnGoingScore.Forty }
             };
             return scoreGrid[_points];
         }

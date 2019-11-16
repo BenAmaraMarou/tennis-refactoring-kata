@@ -19,7 +19,7 @@
 
         public string GetScore()
         {
-            return _player1.GetOnGoingScore() + "-" + _player2.GetOnGoingScore();
+            return _player1.GetOnGoingScore().Display() + "-" + _player2.GetOnGoingScore().Display();
         }
     }
 }

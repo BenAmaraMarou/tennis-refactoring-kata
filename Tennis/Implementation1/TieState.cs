@@ -18,7 +18,7 @@
 
         public string GetScore()
         {
-            return _player1.GetTieScore();
+            return _player1.GetTieScore().Display();
         }
     }
 }
