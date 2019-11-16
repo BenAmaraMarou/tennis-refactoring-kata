@@ -1,21 +1,23 @@
-﻿namespace Tennis
+﻿using Tennis.Implementation1;
+
+namespace Tennis
 {
     class TennisGame1 : ITennisGame
     {
         private int m_score1 = 0;
         private int m_score2 = 0;
-        private string player1Name;
-        private string player2Name;
+        private readonly Player _player1;
+        private readonly Player _player2;
 
         public TennisGame1(string player1Name, string player2Name)
         {
-            this.player1Name = player1Name;
-            this.player2Name = player2Name;
+            _player1 = new Player(player1Name);
+            _player2 = new Player(player2Name);
         }
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
+            if (_player1.IsCalled(playerName))
                 m_score1 += 1;
             else
                 m_score2 += 1;
