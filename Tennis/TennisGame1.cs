@@ -22,9 +22,10 @@ namespace Tennis
 
         public string GetScore()
         {
-            if (_player1.IsInTieWith(_player2))
+            var state = new TieState(_player1, _player2);
+            if (state.IsApplicable())
             {
-                return new TieState(_player1).GetScore();
+                return state.GetScore();
             }
             else if (_player1.HasReached4Points() || _player2.HasReached4Points())
             {
@@ -46,15 +47,22 @@ namespace Tennis
     public class TieState
     {
         private readonly Player _player1;
+        private readonly Player _player2;
 
-        public TieState(Player player1)
+        public TieState(Player player1, Player player2)
         {
             _player1 = player1;
+            _player2 = player2;
         }
 
         public string GetScore()
         {
             return _player1.GetScore();
+        }
+
+        internal bool IsApplicable()
+        {
+            return _player1.IsInTieWith(_player2);
         }
     }
 }
